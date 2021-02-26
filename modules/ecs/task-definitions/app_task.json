@@ -1,0 +1,62 @@
+[
+  {
+    "name": "${app_container_name}",
+    "image": "${app_image}:latest",
+    "cpu": 2048,
+    "memoryReservation": 4096,
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "${aws_region}",
+        "awslogs-stream-prefix": "${app_container_name}"
+      }
+    },
+    "portMappings": [
+      {
+        "hostPort": 2456,
+        "protocol": "UDP",
+        "containerPort": 2456
+      },
+      {
+        "hostPort": 2457,
+        "protocol": "UDP",
+        "containerPort": 2457
+      },
+      {
+        "hostPort": 2458,
+        "protocol": "UDP",
+        "containerPort": 2458
+      }
+    ],
+    "secrets": [
+      {
+        "value": "2456",
+        "name": "SERVER_PORT"
+      },
+      {
+        "value": "0",
+        "name": "SERVER_PUBLIC"
+      },
+      {
+        "value": "OnlyDads",
+        "name": "SERVER_NAME"
+      },
+      {
+        "value": "JamJamia",
+        "name": "WORLD_NAME"
+      },
+      {
+        "valueFROM": "/valheim/server_password",
+        "name": "SERVER_PASS"
+      }
+    ],
+    "environment": [
+      {
+        "name": "RAILS_ENV",
+        "value": "${environment}"
+      }
+    ]
+  }
+]
