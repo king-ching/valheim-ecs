@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "app_repository_name" {
   description = "ECR Repository Name for the app"
-  default     = "valheim_app"
+  default     = "valheim"
 }
 
 variable "app_container_name" {

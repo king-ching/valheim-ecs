@@ -32,6 +32,16 @@
     ],
     "secrets": [
       {
+        "valueFrom": "/valheim/server_password",
+        "name": "SERVER_PASS"
+      }
+    ],
+    "environment": [
+      {
+        "name": "RAILS_ENV",
+        "value": "${environment}"
+      },
+      {
         "value": "2456",
         "name": "SERVER_PORT"
       },
@@ -46,16 +56,6 @@
       {
         "value": "JamJamia",
         "name": "WORLD_NAME"
-      },
-      {
-        "valueFROM": "/valheim/server_password",
-        "name": "SERVER_PASS"
-      }
-    ],
-    "environment": [
-      {
-        "name": "RAILS_ENV",
-        "value": "${environment}"
       }
     ]
   }
